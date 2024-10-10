@@ -1,0 +1,412 @@
+[
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddSubjectApi\u003Eb__0_0",
+    "RelativePath": "api/subjects",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SubjectDto, server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddSubjectApi\u003Eb__0_2",
+    "RelativePath": "api/subjects",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "CreateSubjectDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddSubjectApi\u003Eb__0_1",
+    "RelativePath": "api/subjects/{subjectId}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddSubjectApi\u003Eb__0_3",
+    "RelativePath": "api/subjects/{subjectId}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "UpdateSubjectDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddSubjectApi\u003Eb__0_4",
+    "RelativePath": "api/subjects/{subjectId}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddTaskApi\u003Eb__1_0",
+    "RelativePath": "api/subjects/{subjectId}/tasks",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[TaskDto, server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddTaskApi\u003Eb__1_2",
+    "RelativePath": "api/subjects/{subjectId}/tasks",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CreateTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddTaskApi\u003Eb__1_1",
+    "RelativePath": "api/subjects/{subjectId}/tasks/{taskId}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddTaskApi\u003Eb__1_3",
+    "RelativePath": "api/subjects/{subjectId}/tasks/{taskId}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "UpdateTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddTaskApi\u003Eb__1_4",
+    "RelativePath": "api/subjects/{subjectId}/tasks/{taskId}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__2_0",
+    "RelativePath": "api/subjects/{subjectId}/tasks/{taskId}/comments",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CommentDto, server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__2_2",
+    "RelativePath": "api/subjects/{subjectId}/tasks/{taskId}/comments",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "CreateCommentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__2_1",
+    "RelativePath": "api/subjects/{subjectId}/tasks/{taskId}/comments/{commentId}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__2_3",
+    "RelativePath": "api/subjects/{subjectId}/tasks/{taskId}/comments/{commentId}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "UpdateCommentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "server.Endpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CAddCommentApi\u003Eb__2_4",
+    "RelativePath": "api/subjects/{subjectId}/tasks/{taskId}/comments/{commentId}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subjectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

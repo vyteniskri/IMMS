@@ -1,0 +1,488 @@
+openapi: '3.0.3'
+info:
+  title: API Title
+  description: API's of subject, task and comment
+  version: '1.0'
+
+servers:
+  - url: https://api.server.test
+
+paths:
+  /subjects:
+    get:
+      summary: get list of subjects
+      tags: 
+        - subject
+      operationId: getAllSubjects
+      responses:
+        "200":
+          description: A list of subjects
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: "#/components/schemas/subject"
+              example:
+              - id: 1
+                title: "Lietuviu kalba"
+                description: "Tema skirta mokytis lietuviu kalbai"
+              - id: 2
+                title: "Anglu kalba"
+                description: "Tema skirta mokytis anglu kalbai"
+    post:
+      description: "Create a subject"
+      tags: 
+        - subject
+      operationId: createSubject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createSubject"
+            example: 
+              title: "Lietuviu kalba"
+              description: "Tema skirta mokytis lietuviu kalbai"
+      responses:    
+        "201":
+          $ref: "#/components/responses/singleSubject"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "422":
+          $ref: "#/components/responses/unprocessableEntity"
+
+  /subjects/{subjectId}:
+    parameters:
+      - $ref: '#/components/parameters/subjectId'
+    get:
+      summary: Get a subject by ID 
+      tags:
+        - subject
+      operationId: getSubject 
+      responses:
+        "200":
+          $ref: "#/components/responses/singleSubject"
+        "404":
+          $ref: "#/components/responses/notFound"
+    put:
+      summary: Update a subject by ID 
+      tags:
+       - subject
+      operationId: updateSubject
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              $ref: "#/components/schemas/updateSubject"
+            example:
+              - description: "Tema skirta skirta mokytis ir suzinoti daugiau apie lietuviu kalba"
+      responses:
+        "200":
+          $ref: "#/components/responses/singleSubject"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "422":
+          $ref: "#/components/responses/unprocessableEntity"   
+    delete:
+      summary: Delete a subject by ID 
+      tags:
+        - subject
+      operationId: deleteSubject
+      responses:
+        "404":
+          $ref: "#/components/responses/notFound"
+        "204":
+          description: Subject deleted
+
+  /subjects/{subjectId}/tasks:
+    parameters:
+      - $ref: '#/components/parameters/subjectId'
+    get:
+      summary: Get tasks for a subject
+      tags:
+        - task
+      operationId: getTask
+      responses:
+        "200":
+          description: A list of tasks
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: "#/components/schemas/task"
+              example:
+              - id: 1
+                title: "Nosiniu rasymas"
+                description: "Uzduotis skirta mokytis apie nosiniu rasyma"
+              - id: 2
+                title: "Skirybos zenklai"
+                description: "Uzduotis skirta mokytis apie skirybos zenklus"
+    post: 
+      description: "Create a task"
+      tags:
+        - task
+      operationId: createTask
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createTask"
+            example: 
+              title: "Nosiniu rasymas"
+              description: "Uzduotis skirta mokytis apie nosiniu rasyma"
+      responses:    
+        "201":
+          $ref: "#/components/responses/singleTask"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "422":
+          $ref: "#/components/responses/unprocessableEntity"
+
+  /subjects/{subjectId}/tasks/{taskId}:
+    parameters:
+      - $ref: '#/components/parameters/subjectId'
+      - $ref: '#/components/parameters/taskId'
+    get:
+      summary: Get a specific task for a subject
+      tags:
+        - task
+      operationId: getTask
+      responses:
+        "200":
+          $ref: "#/components/responses/singleTask"
+        "404":
+          $ref: "#/components/responses/notFound"
+    put:
+      summary: Update a task by ID 
+      tags:
+       - task
+      operationId: updateTask
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              $ref: "#/components/schemas/updateTask"
+            example:
+              - description: "Uzduotis skirta mokytis apie nosiniu rasyma ir t.t"
+      responses:
+        "200":
+          $ref: "#/components/responses/singleTask"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "422":
+          $ref: "#/components/responses/unprocessableEntity"    
+    delete:
+      summary: Delete a task by ID 
+      tags:
+        - task
+      operationId: deleteTask
+      responses:
+        "404":
+          $ref: "#/components/responses/notFound"
+        "204":
+          description: Task deleted
+
+  /subjects/{subjectId}/tasks/{taskId}/comments:
+    parameters:
+      - $ref: '#/components/parameters/subjectId'
+      - $ref: '#/components/parameters/taskId'
+    get:
+      summary: Get comments for a specific task
+      tags:
+        - comment
+      operationId: getComments
+      responses:
+        "200":
+          description: A list of comments
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: "#/components/schemas/comment"
+              example:
+              - id: 1
+                text: "Gera uzduotis"
+              - id: 2
+                text: "Nesupratau uzduoties"
+    post: 
+      description: "Create a comment"
+      tags:
+        - comment
+      operationId: createComment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createComment"
+            example: 
+              text: "Gera uzduotis"
+      responses:    
+        "201":
+          $ref: "#/components/responses/singleComment"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "422":
+          $ref: "#/components/responses/unprocessableEntity"
+
+  /subjects/{subjectId}/tasks/{taskId}/comments/{commentId}:
+    parameters:
+      - $ref: '#/components/parameters/subjectId'
+      - $ref: '#/components/parameters/taskId'
+      - $ref: '#/components/parameters/commentId'
+    get:
+      summary: Get a specific comment
+      tags:
+        - comment
+      operationId: getComment
+      responses:
+        "200":
+          $ref: "#/components/responses/singleComment"
+        "404":
+          $ref: "#/components/responses/notFound"
+    put:
+      summary: Update a comment by ID 
+      tags:
+       - comment
+      operationId: updateComment
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              $ref: "#/components/schemas/updateComment"
+            example:
+              - text: "Nelabai gera uzduotis"
+      responses:
+        "200":
+          $ref: "#/components/responses/singleComment"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "422":
+          $ref: "#/components/responses/unprocessableEntity" 
+    delete:
+      summary: Delete a comment by ID 
+      tags:
+        - comment
+      operationId: deleteComment
+      responses:
+        "404":
+          $ref: "#/components/responses/notFound"
+        "204":
+          description: Comment deleted
+
+components:
+  schemas:
+    subject:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+    createSubject:
+      type: object
+      required:
+        - title
+        - description
+      properties:
+        title:
+          minLength: 2
+          maxLength: 100
+          type: string
+        description: 
+          minLength: 5
+          maxLength: 500
+          type: string
+    updateSubject:
+      type: object
+      properties:
+        description: 
+          minLength: 5
+          maxLength: 500
+          type: string
+
+    task: 
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+    createTask:
+      type: object
+      required:
+        - title
+        - description
+      properties:
+        title:
+          minLength: 2
+          maxLength: 100
+          type: string
+        description: 
+          minLength: 5
+          maxLength: 500
+          type: string
+    updateTask:
+      type: object
+      properties:
+        description: 
+          minLength: 5
+          maxLength: 500
+          type: string
+    
+    comment:
+      type: object
+      properties:
+        id:
+          type: integer
+        text:
+          type: string
+    createComment:
+      type: object
+      required:
+        - text
+      properties:
+        text:
+          minLength: 5
+          maxLength: 500
+          type: string
+    updateComment:
+      type: object
+      properties:
+        text: 
+          minLength: 5
+          maxLength: 500
+          type: string      
+
+    problemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          description: A URI reference that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type.
+        status:
+          type: integer
+          format: int32
+          description: The HTTP status code applicable to this problem.
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          format: uri
+          description: A URI reference that identifies the specific occurrence of the problem.
+        errors:
+          type: object
+          description: A map of detailed errors for every property ([property => error])
+
+  responses:
+    singleSubject:
+      description: A subject
+      content:
+        application/json:
+          schema:
+            type: object
+            items:
+              $ref: "#/components/schemas/subject"
+          example:
+            - id: 1
+              title: "Lietuviu kalba"
+              description: "Tema skirta mokytis lietuviu kalbai"
+    singleTask:
+      description: A task
+      content:
+        application/json:
+          schema:
+            type: object
+            items:
+              $ref: "#/components/schemas/task"
+          example:
+            - id: 1
+              title: "Nosiniu rasymas"
+              description: "Uzduotis skirta mokytis apie nosiniu rasyma"
+    singleComment:
+      description: A comment
+      content:
+        application/json:
+          schema:
+            type: object
+            items:
+              $ref: "#/components/schemas/comment"
+          example:
+            - id: 1
+              text: "Gera uzduotis"
+
+    unprocessableEntity:
+      description: Uprocessable entity responce
+      content:
+        application/problem+json:
+          schema:
+            type: object
+            items:
+              $ref: "#/components/schemas/problemDetails"
+          example:
+            type: "https://tools.ietf.org/html/rfc4918#section-11.2"
+            title: "Unprocessable Entity"
+            status: 422
+            errors:
+              Name:
+                - "'Name' must not be empty."
+    badRequest:
+      description: Bad request responses
+    notFound:
+      description: Resource was not found
+
+  parameters:
+    subjectId:
+      name: subjectId
+      in: path
+      required: true
+      schema: 
+        type: integer
+        minimum: 1
+      description: the unique indentifier of the subject
+    taskId:
+      name: taskId
+      in: path
+      required: true
+      schema: 
+        type: integer
+        minimum: 1
+      description: the unique indentifier of the task
+    commentId:
+      name: commentId
+      in: path
+      required: true
+      schema: 
+        type: integer
+        minimum: 1
+      description: the unique indentifier of the comment
+        
+tags:
+  - name: subject
+    description: Operation related to subjects
+  - name: task
+    description: Operations related to tasks
+  - name: comment
+    description: Operations related to comments
+
+
