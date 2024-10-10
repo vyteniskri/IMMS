@@ -68,5 +68,5 @@ Internetinė moksleivių mokymosi svetainė.
 
 Front-end: JavaScript ir React.js.
 
-Back-end: Node.js su Express ir PostgreSQL duomenų bazė.
+Back-end: c# .NET ir PostgreSQL duomenų bazė.
 
