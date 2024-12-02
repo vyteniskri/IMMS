@@ -9,8 +9,22 @@ using SharpGrip.FluentValidation.AutoValidation.Shared.Extensions;
 using server;
 using Microsoft.AspNetCore.Builder;
 using System.ComponentModel.Design;
+using server.Auth.Model;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using server.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 builder.Services.AddDbContext<ForumDbContex>();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
@@ -18,8 +32,42 @@ builder.Services.AddFluentValidationAutoValidation(configuration =>
 {
     configuration.OverrideDefaultResultFactoryWith<ProblemDetailsResultFactory>();
 });
+
+builder.Services.AddTransient<JwtTokenService>();
+builder.Services.AddTransient<SessionService>();
+builder.Services.AddScoped<AuthSeeder>();
+
+builder.Services.AddIdentity<ForumUser, IdentityRole>()
+    .AddEntityFrameworkStores<ForumDbContex>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.MapInboundClaims = false;
+    options.TokenValidationParameters.ValidAudience = builder.Configuration["Jwt:ValidAudience"];
+    options.TokenValidationParameters.ValidIssuer = builder.Configuration["Jwt:ValidIssuer"];
+    options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]));
+
+});
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
+app.UseCors();
+
+using var scope = app.Services.CreateScope();
+
+var dbContext = scope.ServiceProvider.GetRequiredService<ForumDbContex>();
+dbContext.Database.Migrate();
+
+var dbSeeder = scope.ServiceProvider.GetRequiredService<AuthSeeder>();
+await dbSeeder.SeedAsync();
 /*
   /api/subjects GET List 200
   /api/subjects POST Create 201
@@ -28,12 +76,13 @@ var app = builder.Build();
   /api/subjects/{id} DELETE Remove 200/204
  */
 
-
+app.AddAuthApi();
 app.AddSubjectApi();
 app.AddTaskApi();
 app.AddCommentApi();
 
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();
 
 

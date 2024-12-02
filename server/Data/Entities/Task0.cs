@@ -1,4 +1,7 @@
-﻿namespace server.Data.Entities
+﻿using server.Auth.Model;
+using System.ComponentModel.DataAnnotations;
+
+namespace server.Data.Entities
 {
     public class Task0
     {
@@ -8,6 +11,11 @@
         public required DateTimeOffset CreatedAt { get; set; }
 
         public Subject Subject { get; set; }
+
+        [Required]
+        public required string UserId { get; set; }
+
+        public ForumUser User { get; set; }
 
         public TaskDto ToDto()
         {
