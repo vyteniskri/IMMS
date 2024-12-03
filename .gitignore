@@ -2,3 +2,4 @@ server/bin/
 server/.vs
 /server/obj/Release/net8.0
 /server/obj/Debug/net8.0
+/.vs
