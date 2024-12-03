@@ -2,7 +2,7 @@
 WORKDIR /App
 
 # Copy everything
-COPY "4 kursas 1 dalis/Saityno taikomųjų programų projektavimas/Lab 1/server" .
+COPY "git uploads/IMMS/server" .
 # Restore as distinct layers
 RUN dotnet restore
 # Build and publish a release
