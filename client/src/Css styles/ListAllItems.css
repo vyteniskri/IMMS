@@ -2,6 +2,7 @@
 .all-items-container {
     padding: 20px;
     text-align: center; /* Center the content */
+    
   }
   
   /* Center the h1 */
@@ -75,4 +76,24 @@
   padding-right: 20px;
   text-align: right;
   font-size: 1.2rem;
+}
+
+.open-button-container{
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  padding: 20px;
+}
+
+.open-button {
+  font-size: 20px;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.open-button:hover {
+  background-color: #0056b3;
 }
