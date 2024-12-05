@@ -1,5 +1,6 @@
 
-const HomeScreen = () => {  
+const HomeScreen = () => { 
+    
     return (
         <div>Welcome to home screen</div>
     );

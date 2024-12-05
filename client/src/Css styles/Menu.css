@@ -35,7 +35,25 @@
     background-color: rgb(219, 128, 128);
     border-radius: 10px;
   }
+
+  .menu-links button {
+    background: none; 
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center; 
+    width: 100px;
+    display: inline-block;
+    cursor: pointer;
+  }
   
+  .menu-links button:hover {
+    background-color: rgb(219, 128, 128);
+    border-radius: 10px;
+  }
+
   .menu-toggle {
     display: none;
     font-size: 24px;
@@ -49,6 +67,12 @@
   .menu-toggle:hover {
     background-color: rgb(219, 128, 128);
     border-radius: 50%;
+  }
+
+  .menu-links-right {
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
   }
 
   @media (max-width: 768px) {

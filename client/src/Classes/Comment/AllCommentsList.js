@@ -8,14 +8,17 @@ const AllCommentsList = ({ subjectId, taskId, onClose }) => {
     const navigate = useNavigate();
     const [newCommentText, setNewCommentText] = useState("Write your comment here...");
     const [errorMessage, setErrorMessage] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`https://goldfish-app-ebu3p.ondigitalocean.app/api/subjects/${subjectId}/tasks/${taskId}/comments`)
           .then(response => {
             if (response.data.length > 0) {
                 setComments(response.data);
+                setLoading(false);
             } else {
-                setComments("no comments");
+                setComments([]);
+                setLoading(false);
             }
           })
           .catch(error => {
@@ -29,7 +32,7 @@ const AllCommentsList = ({ subjectId, taskId, onClose }) => {
 
     const handleCreateComment = () => {
 
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVhY2hlciIsImp0aSI6IjQxZTM5ODcwLTBjNjctNDVmYi1iODJkLWE3MDJhY2RjYjI0NSIsInN1YiI6IjA0OTNlMjY4LTA4ZmMtNDE0NC1iNGRiLWM5MzhkODFhMzgwMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlRlYWNoZXIiLCJleHAiOjE3MzMzNTUxMDksImlzcyI6IlZ5dGVuaXMiLCJhdWQiOiJUcnVzdGVkQ2xpZW50In0.wDGF9N-g-agWVn-10LX9PkcLGTNfFnN4Mv1j-5vKEHc"; // Get token from localStorage
+        const token = localStorage.getItem("accessToken");
     
         const updatedComment = { text: newCommentText };
         axios
@@ -52,7 +55,7 @@ const AllCommentsList = ({ subjectId, taskId, onClose }) => {
                 setErrorMessage("*The message is incorect. \nWrite between 5 and 500 symbols.");
             }
             else if (error.status === 401){
-                setErrorMessage("*Unautorized");
+                setErrorMessage("*To leave a comment, please Sing Up");
             }
             console.error('Error fetching comments:', error);
           });
@@ -65,7 +68,7 @@ const AllCommentsList = ({ subjectId, taskId, onClose }) => {
                 <button className="close-button" onClick={onClose}>X</button>
 
                 <div className="comments-list">
-                    {comments === "no comments" ? (
+                    {comments.length === 0 && !loading ? (
                         <p>No comments yet.</p>
                         ) : (
                             comments.map((comment) => (

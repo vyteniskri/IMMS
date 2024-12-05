@@ -131,7 +131,7 @@ namespace server.Auth
                 {
                     return Results.UnprocessableEntity();
                 }
-
+                
                 if (!jwtTokenService.TryParseRefreshToken(refreshToken, out var claims))
                 {
                     return Results.UnprocessableEntity();
