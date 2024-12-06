@@ -63,7 +63,7 @@ namespace server.Auth
                 var coockieOptions = new CookieOptions()
                 {
                     HttpOnly = true,
-                    SameSite = SameSiteMode.Lax,
+                    SameSite = SameSiteMode.None,
                     Expires = expiresAt,
                     Secure = true
                 };
@@ -113,7 +113,7 @@ namespace server.Auth
                 var coockieOptions = new CookieOptions()
                 {
                     HttpOnly = true,
-                    SameSite = SameSiteMode.Lax,
+                    SameSite = SameSiteMode.None,
                     Expires = expiresAt,
                     Secure = true
                 };
