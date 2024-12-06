@@ -16,7 +16,7 @@ const Register = () => {
     
       const registerDto = { UserName: userName, Email: email, Password: password };
     
-      axios.post("http://localhost:5097/api/accounts", registerDto)
+      axios.post("https://goldfish-app-ebu3p.ondigitalocean.app/api/accounts", registerDto)
         .then((response) => {
           navigate("/Login"); 
         })

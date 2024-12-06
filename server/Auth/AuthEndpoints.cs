@@ -65,7 +65,7 @@ namespace server.Auth
                     HttpOnly = true,
                     SameSite = SameSiteMode.Lax,
                     Expires = expiresAt,
-                    //Secure = true => Should be true
+                    Secure = true
                 };
 
                 httpContext.Response.Cookies.Append("RefreshToken", refreshToken, coockieOptions);
@@ -115,7 +115,7 @@ namespace server.Auth
                     HttpOnly = true,
                     SameSite = SameSiteMode.Lax,
                     Expires = expiresAt,
-                    //Secure = true => Should be true
+                    Secure = true
                 };
 
                 httpContext.Response.Cookies.Append("RefreshToken", newRefreshToken, coockieOptions);

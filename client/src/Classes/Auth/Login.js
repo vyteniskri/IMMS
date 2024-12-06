@@ -15,7 +15,7 @@ const Login = () => {
   
     const loginDto = { UserName: userName, Password: password };
   
-    axios.post("http://localhost:5097/api/login", loginDto, { withCredentials: true })
+    axios.post("https://goldfish-app-ebu3p.ondigitalocean.app/api/login", loginDto, { withCredentials: true })
       .then((response) => {
         const accessToken = response.data.accessToken;
         localStorage.setItem("accessToken", accessToken);

@@ -22,7 +22,7 @@ const Menu = () => {
     const handleLogout = () => {
       axios
         .post(
-          "http://localhost:5097/api/logout", 
+          "https://goldfish-app-ebu3p.ondigitalocean.app/api/logout", 
           {},  // Empty body if no data needs to be sent
           {
             withCredentials: true,  // Ensures cookies are sent
