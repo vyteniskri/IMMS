@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../Css styles/Comments.css';
 import { useNavigate } from 'react-router-dom';
+import { getAccessToken } from "../Auth/NewAccessToken";
 
 const AllCommentsList = ({ subjectId, taskId, onClose }) => {
     const [comments, setComments] = useState([]);
@@ -52,10 +53,11 @@ const AllCommentsList = ({ subjectId, taskId, onClose }) => {
           })
           .catch((error) => {
             if (error.status === 422){
-                setErrorMessage("*The message is incorect. \nWrite between 5 and 500 symbols.");
+                setErrorMessage(error.response.data.errors.Text);
             }
             else if (error.status === 401){
-                setErrorMessage("*To leave a comment, please Sing Up");
+                getAccessToken();
+                setErrorMessage("*Please try again.");
             }
             console.error('Error fetching comments:', error);
           });

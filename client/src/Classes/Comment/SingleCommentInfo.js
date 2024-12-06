@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../../Css styles/SingleComment.css';
+import { getAccessToken } from "../Auth/NewAccessToken";
 
 const SingleCommentInfo = () => {
     const { subjectId, taskId, commentId } = useParams();
@@ -45,10 +46,11 @@ const SingleCommentInfo = () => {
           })
           .catch((error) => {
             if (error.status === 422){
-                setErrorMessage("*The message is incorect. \nWrite between 5 and 500 symbols.");
+                setErrorMessage(error.response.data.errors.Text);
             }
             else if (error.status === 401){
-                setErrorMessage("*Unautorized");
+                getAccessToken();
+                setErrorMessage("*Please try again.");
             }
             else if (error.status === 403){
               setErrorMessage("*You can't edit this comment")
@@ -75,7 +77,8 @@ const SingleCommentInfo = () => {
           })
           .catch((error) => {
             if (error.status === 401){
-              alert("*Unauthorized");
+              getAccessToken();
+              alert("*Please try again.");
             }
             else if (error.status === 403){
               alert("*You can't delete this comment");

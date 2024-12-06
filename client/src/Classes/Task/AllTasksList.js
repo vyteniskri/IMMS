@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../Css styles/ListAllItems.css';
 import '../../Css styles/SingleTask.css';
+import { getAccessToken } from "../Auth/NewAccessToken";
 
 const AllTasksList = ({subjectId}) => {
     const [tasks, setTasks] = useState([]);
@@ -70,7 +71,9 @@ const AllTasksList = ({subjectId}) => {
                 }
             }
             else if (error.status === 401){
-                setErrorMessage("*Unauthorized");
+                getAccessToken();
+
+                setErrorMessage("*Please try again.");
                 setErrorMessageTitle("");
                 setErrorMessageDescription("");
             } 

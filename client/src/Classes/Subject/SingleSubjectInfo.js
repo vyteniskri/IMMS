@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../../Css styles/ListAllItems.css';
 import '../../Css styles/SingleSubject.css';
 import AllTasksList from '../Task/AllTasksList';
+import { getAccessToken } from "../Auth/NewAccessToken";
 
 const SingleSubjectInfo = () => {
     const [subject, setSubject] = useState(null);
@@ -60,7 +61,9 @@ const SingleSubjectInfo = () => {
                 }
             }
             else if (error.status === 401){
-                setErrorMessage("*Unauthorized");
+                getAccessToken(); /// tryes to get new access token
+
+                setErrorMessage("*Please try again.");
                 setErrorMessageDescription("");
             }
             else if (error.status === 403){
@@ -88,7 +91,9 @@ const SingleSubjectInfo = () => {
         })
         .catch((error) => {
           if (error.status === 401){
-            alert("*Unauthorized");
+            getAccessToken(); /// tryes to get new access token
+
+            alert("*Please try again.");
           }
           else if (error.status === 403){
             alert("*You can't delete this subject");

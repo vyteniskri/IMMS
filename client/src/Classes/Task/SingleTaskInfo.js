@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../../Css styles/ListAllItems.css';
 import '../../Css styles/SingleTask.css';
 import AllCommentsList from '../Comment/AllCommentsList';
+import { getAccessToken } from "../Auth/NewAccessToken";
 
 const SingleTaskInfo = () => {
     const { subjectId, taskId } = useParams();
@@ -62,7 +63,9 @@ const SingleTaskInfo = () => {
                   }
               }
               else if (error.status === 401){
-                  setErrorMessage("*Unauthorized");
+                  getAccessToken();
+
+                  setErrorMessage("*Please try again.");
                   setErrorMessageDescription("");
               }
               else if (error.status === 403){
@@ -90,7 +93,9 @@ const SingleTaskInfo = () => {
           })
           .catch((error) => {
             if (error.status === 401){
-                alert("*Unauthorized");
+                getAccessToken();
+
+                alert("*Please try again.");
             }
             else if (error.status === 403){
               alert("*You can't delete this task");

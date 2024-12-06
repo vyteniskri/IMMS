@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../../Css styles/ListAllItems.css';
 import '../../Css styles/SingleSubject.css';
 import { useNavigate } from 'react-router-dom';
+import { getAccessToken } from "../Auth/NewAccessToken";
 
 const AllSubjectsList = () => {
     const [subjects, setSubjects] = useState([]);
@@ -69,7 +70,9 @@ const AllSubjectsList = () => {
                 }
             }
             else if (error.status === 401){
-                setErrorMessage("*Unauthorized");
+                getAccessToken(); /// tryes to get new access token
+
+                setErrorMessage("*Please try again.");
                 setErrorMessageTitle("");
                 setErrorMessageDescription("");
             } else if (error.status === 403){
