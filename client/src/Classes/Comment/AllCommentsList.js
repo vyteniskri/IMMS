@@ -84,7 +84,7 @@ const AllCommentsList = ({ subjectId, taskId, onClose }) => {
                              ))
                         )}
                 </div>
-                <h4>Leave a comment</h4>
+                <h4>Leave a comment <i className="fas fa-comments"></i></h4>
                     <div className='new-comment-container'>
 
                         <textarea

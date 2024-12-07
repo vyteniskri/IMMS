@@ -87,7 +87,9 @@ const AllSubjectsList = () => {
     return (
       <>
         <div className="all-items-container">
-          <h1>Select a subject to learn</h1>
+          <div className='title-container'>
+            <h1>Select a subject to learn</h1>
+          </div>
           <div className="items-list">
             {subjects.map(subject => (
               <div

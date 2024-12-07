@@ -29,6 +29,7 @@ const App = () => {
 
 export default App;
 
-//TODO: papushint serveri kad DigitalOcian matytu, pakeisti dizaina puslapio bsk (image ir t.t.), padaryt refreshToken kvietima i serveri, 
-// pakeist cliento api kvietimus (register, login ir lougout) patalpint clienta i clouda,
+//TODO: 
+// patalpint clienta i clouda,
 // padaryt ataskaita ir shemu pabraizyt
+///Header, Content, Footer srityse stilius turėtų būti skirtingas (specifiškas). Srityse turėtų būti bent po keletą skirtingų elementų. Analogiški elementai skirtingose srityse turėtų įgauti skirtingą išvaizdą.

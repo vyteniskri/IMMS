@@ -1,0 +1,18 @@
+.home-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 50px 50px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px); 
+    font-size: 90px;
+   
+    padding: 50px;
+}
+
+.home-screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+}

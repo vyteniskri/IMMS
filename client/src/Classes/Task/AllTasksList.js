@@ -89,7 +89,9 @@ const AllTasksList = ({subjectId}) => {
     return (
       <>
             <div className="all-items-container">
-                <h1>Select a task to learn</h1>
+                <div className='title-container'>
+                  <h1>Select a task to learn</h1>
+                </div>
                 <div className="items-list">
                     {tasks.map(task => (
                     <div

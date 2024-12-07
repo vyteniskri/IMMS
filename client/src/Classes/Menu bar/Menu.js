@@ -50,19 +50,19 @@ const Menu = () => {
           </button>
         </div>
         <ul className={`menu-links ${isOpen ? 'open' : ''}`}>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/AllSubjects">Subjects</Link></li>
+          <li><Link to="/"><i className="fas fa-home"></i> Home</Link></li>
+          <li><Link to="/AllSubjects"><i className="fas fa-book"></i> Subjects</Link></li>
 
           <div className="menu-links-right">
           {!accessToken ? (
             <>
-              <li><Link to="/Register">Register</Link></li>
-              <li><Link to="/Login">Login</Link></li>
+              <li><Link to="/Register"><i className="fas fa-user-plus"></i> Register</Link></li>
+              <li><Link to="/Login"><i className="fas fa-sign-in-alt"></i> Login</Link></li>
             </>
           ) : (
             <li>
               <button onClick={handleLogout}>
-                Logout
+              <i className="fas fa-sign-out-alt"></i> Logout
               </button>
             </li>
           )}

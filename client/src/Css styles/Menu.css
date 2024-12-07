@@ -10,7 +10,7 @@
   }
   
   .menu-logo {
-    font-size: 28px;
+    font-size: 35px;
   }
   
   .menu-links {
@@ -43,6 +43,7 @@
     text-decoration: none;
     font-size: 18px;
     padding: 10px;
+    margin-right: 10px;
     text-align: center; 
     width: 100px;
     display: inline-block;
@@ -81,7 +82,7 @@
       flex-direction: column;
       background-color: #333;
       position: absolute;
-      top: 80px;
+      top: 100px;
       left: 0;
       width: 100%;
       padding: 10px 0;
