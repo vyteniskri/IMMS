@@ -12,6 +12,12 @@ import Register from '../Auth/Register';
 const App = () => {
   return (
     <>
+      <header>
+        <div className="menu-header">
+          <h1 className="menu-logo">OSLS</h1>
+        </div>
+      </header>
+      
       <Menu />
       <Routes>
         <Route path='/' element={<HomeScreen/>} />
@@ -23,6 +29,10 @@ const App = () => {
         <Route path='/AllSubjects/:subjectId/AllTasks/:taskId' element={<SingleTaskInfo/>} />
         <Route path='/AllSubjects/:subjectId/AllTasks/:taskId/AllComments/:commentId' element={<SingleCommentInfo/>} />
       </Routes>
+
+      <footer>
+        <p>© 2024 Online Student Learning site</p>
+      </footer>
     </>
   );
 }

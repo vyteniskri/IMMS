@@ -8,6 +8,13 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .expandable-meniu {
+    position: absolute; 
+    right: 0; 
+    top: 0;
+    margin-top: 5px;
+  }
   
   .menu-logo {
     font-size: 35px;
@@ -62,7 +69,8 @@
     border: none;
     color: white;
     cursor: pointer;
-    width: 80px;
+    width: 70px;
+    height: 70px;
   }
   
   .menu-toggle:hover {
@@ -82,7 +90,7 @@
       flex-direction: column;
       background-color: #333;
       position: absolute;
-      top: 100px;
+      top: 90px;
       left: 0;
       width: 100%;
       padding: 10px 0;

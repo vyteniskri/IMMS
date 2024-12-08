@@ -42,9 +42,10 @@ const Menu = () => {
     
   
     return (
+      <>
+      
       <nav className="menu">
-        <div className="menu-header">
-          <h1 className="menu-logo">OSLS</h1> {/* Online Student Learing Site*/}
+        <div className="expandable-meniu">
           <button className="menu-toggle" onClick={toggleMenu}>
             ☰
           </button>
@@ -70,6 +71,8 @@ const Menu = () => {
 
         </ul>
       </nav>
+
+      </>
     );
 };
 
