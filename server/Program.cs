@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:3000").AllowCredentials().AllowAnyHeader().AllowAnyMethod(); ///AllowCredentials() added
+        policy.WithOrigins("https://osls.netlify.app").AllowCredentials().AllowAnyHeader().AllowAnyMethod(); ///AllowCredentials() added
     });
 });
 
