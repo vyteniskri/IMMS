@@ -119,7 +119,7 @@ const SingleCommentInfo = () => {
               
             {localStorage.getItem("Role") !== null  && (
             <div className="buttons-container">
-                    <button className='update-button-comment' onClick={() => {setIsUpdateOpen(true); setNewCommentText(comment.description) }}>Update</button>
+                    <button className='update-button-comment' onClick={() => {setIsUpdateOpen(true); setNewCommentText(comment.text) }}>Update</button>
                     <button className='delete-button-comment' onClick={handleDeleteComment}>Delete</button>
             </div>
             )}
