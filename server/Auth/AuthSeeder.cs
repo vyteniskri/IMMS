@@ -28,14 +28,14 @@ namespace server.Auth
         {
             var newAdminUser = new ForumUser()
             {
-                UserName = "admin",
+                UserName = "Admin",
                 Email = "admin@admin.com"
             };
 
             var exsistAdminUser = await _userManager.FindByNameAsync(newAdminUser.UserName);
             if (exsistAdminUser == null)
             {
-                var createAdminUserResult = await _userManager.CreateAsync(newAdminUser, "VerySafePassword1!");
+                var createAdminUserResult = await _userManager.CreateAsync(newAdminUser, "Langai123!");
                 if (createAdminUserResult.Succeeded)
                 {
                     await _userManager.AddToRolesAsync(newAdminUser, ForumRoles.All);
@@ -48,14 +48,14 @@ namespace server.Auth
         {
             var newTeacherUser = new ForumUser()
             {
-                UserName = "teacher",
+                UserName = "Teacher1",
                 Email = "teacher@teacher.com"
             };
 
             var exsistAdminUser = await _userManager.FindByNameAsync(newTeacherUser.UserName);
             if (exsistAdminUser == null)
             {
-                var createAdminUserResult = await _userManager.CreateAsync(newTeacherUser, "VerySafePassword1!");
+                var createAdminUserResult = await _userManager.CreateAsync(newTeacherUser, "Langai123!");
                 if (createAdminUserResult.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(newTeacherUser, ForumRoles.Teacher);
@@ -68,14 +68,14 @@ namespace server.Auth
         {
             var newTeacherUser = new ForumUser()
             {
-                UserName = "teacher2",
+                UserName = "Teacher2",
                 Email = "teacher@teacher.com"
             };
 
             var exsistAdminUser = await _userManager.FindByNameAsync(newTeacherUser.UserName);
             if (exsistAdminUser == null)
             {
-                var createAdminUserResult = await _userManager.CreateAsync(newTeacherUser, "VerySafePassword1!");
+                var createAdminUserResult = await _userManager.CreateAsync(newTeacherUser, "Langai123!");
                 if (createAdminUserResult.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(newTeacherUser, ForumRoles.Teacher);

@@ -129,7 +129,7 @@ const SingleSubjectInfo = () => {
 
                             <p>Write a Description</p>
                             <textarea
-                                value={newSubjectDescription}
+                                value={subject.description}
                                 onChange={(e) => setNewSubjectDescription(e.target.value)}
                                 rows={5}
                                 cols={40}

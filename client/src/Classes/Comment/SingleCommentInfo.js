@@ -103,7 +103,7 @@ const SingleCommentInfo = () => {
                             <button className="close-button-comment" onClick={() => { setIsUpdateOpen(false); setErrorMessage(""); setNewCommentText(""); }}>X</button>
 
                             <textarea
-                                value={newCommentText}
+                                value={comment.text}
                                 onChange={(e) => setNewCommentText(e.target.value)}
                                 rows={5}
                                 cols={40}

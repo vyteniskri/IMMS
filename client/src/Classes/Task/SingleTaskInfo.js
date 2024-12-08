@@ -131,7 +131,7 @@ const SingleTaskInfo = () => {
 
                             <p>Write a Description</p>
                             <textarea
-                                value={newTaskDescription}
+                                value={task.description}
                                 onChange={(e) => setNewTaskDescription(e.target.value)}
                                 rows={5}
                                 cols={40}
