@@ -115,7 +115,7 @@ const SingleTaskInfo = () => {
 
             {(localStorage.getItem("Role") !== null && localStorage.getItem("Role").includes("Teacher")) && (
             <div className="buttons-container-task">
-                    <button className='update-button-task' onClick={() => setIsUpdateOpen(true)}>Update</button>
+                    <button className='update-button-task' onClick={() => {setIsUpdateOpen(true); setNewTaskDescription(task.description) }}>Update</button>
                     <button className='delete-button-task' onClick={handleDeleteTask}>Delete</button>
             </div>
             )}
@@ -131,7 +131,7 @@ const SingleTaskInfo = () => {
 
                             <p>Write a Description</p>
                             <textarea
-                                value={task.description}
+                                value={newTaskDescription}
                                 onChange={(e) => setNewTaskDescription(e.target.value)}
                                 rows={5}
                                 cols={40}

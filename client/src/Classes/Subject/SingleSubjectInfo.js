@@ -113,7 +113,7 @@ const SingleSubjectInfo = () => {
             {(localStorage.getItem("Role") !== null && localStorage.getItem("Role").includes("Teacher")) && (
             <div className="buttons-container-subject">
               
-                    <button className='update-button-subject' onClick={() => setIsUpdateOpen(true)}>Update</button>
+                    <button className='update-button-subject' onClick={() => {setIsUpdateOpen(true); setNewSubjectDescription(subject.description) }}>Update</button>
                     <button className='delete-button-subject' onClick={handleDeleteSubject}>Delete</button>
             </div>
             )}
@@ -129,7 +129,7 @@ const SingleSubjectInfo = () => {
 
                             <p>Write a Description</p>
                             <textarea
-                                value={subject.description}
+                                value={newSubjectDescription}
                                 onChange={(e) => setNewSubjectDescription(e.target.value)}
                                 rows={5}
                                 cols={40}

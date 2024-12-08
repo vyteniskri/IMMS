@@ -103,7 +103,7 @@ const SingleCommentInfo = () => {
                             <button className="close-button-comment" onClick={() => { setIsUpdateOpen(false); setErrorMessage(""); setNewCommentText(""); }}>X</button>
 
                             <textarea
-                                value={comment.text}
+                                value={newCommentText}
                                 onChange={(e) => setNewCommentText(e.target.value)}
                                 rows={5}
                                 cols={40}
@@ -119,7 +119,7 @@ const SingleCommentInfo = () => {
               
             {localStorage.getItem("Role") !== null  && (
             <div className="buttons-container">
-                    <button className='update-button-comment' onClick={() => setIsUpdateOpen(true)}>Update</button>
+                    <button className='update-button-comment' onClick={() => {setIsUpdateOpen(true); setNewCommentText(comment.description) }}>Update</button>
                     <button className='delete-button-comment' onClick={handleDeleteComment}>Delete</button>
             </div>
             )}
