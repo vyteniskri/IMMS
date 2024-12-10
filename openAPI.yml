@@ -8,6 +8,155 @@ servers:
   - url: https://api.server.test
 
 paths:
+  /login:
+    post:
+      summary: login a user
+      tags:
+        - login
+      operationId: postLogin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                password:
+                  type: string
+              required:
+                - userName
+                - password
+              example:
+                userName: "john_doe"
+                password: "password123"
+      responses:
+        "200":
+          description: Access token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                example:
+                  accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        "422":
+          description: Uprocessable entity responce
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              examples:
+                  invalid_credentials:
+                    summary: Invalid username or password
+                    value:
+                      error: "Username or password was incorrect."
+                  user_not_found:
+                    summary: User does not exist
+                    value:
+                      error: "User does not exist."
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+
+  /accounts:
+    post:
+      summary: Register a user
+      tags:
+        - register
+      operationId: postRegister
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  description: The username of the new user.
+                  example: johndoe
+                email:
+                  type: string
+                  description: The email address of the new user.
+                  example: johndoe@example.com
+                password:
+                  type: string
+                  description: The password for the new user.
+                  example: MySecurePassword123
+      responses:
+        "201":
+          description: User successfully registered
+        "422":
+          description: Uprocessable entity responce
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              examples:
+                username_taken:
+                  summary: Username already taken
+                  value:
+                    error: "Username already taken"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "404":
+          $ref: "#/components/responses/notFound"
+      
+  /logout:
+    post:
+      summary: Log out a user
+      tags:
+        - logout
+      operationId: postLogout
+      responses:
+        "200":
+          description: Successfully logged out
+        "422":
+          description: Uprocessable entity responce 
+        "404":
+          $ref: "#/components/responses/notFound"
+
+
+  /accessToken:
+    post:
+      summary: Renew access token using a refresh token
+      tags:
+        - newAccessToken
+      operationId: postAccessToken
+      responses:
+        "200":
+          description: Successfully renewed the access token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    description: The new access token
+                required:
+                  - accessToken
+                example:
+                  accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        "422":
+          description: Uprocessable entity responce
+        "404":
+          $ref: "#/components/responses/notFound"
+
+                  
+
+
   /subjects:
     get:
       summary: get list of subjects
@@ -484,5 +633,13 @@ tags:
     description: Operations related to tasks
   - name: comment
     description: Operations related to comments
+  - name: login
+    description: Operation related to login
+  - name: register
+    description: Operation related to register
+  - name: logout
+    description: Operation related to logout
+  - name: newAccessToken
+    description: Operation related to getting new access token
 
 
